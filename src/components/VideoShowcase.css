@@ -1,0 +1,49 @@
+.video-showcase {
+  padding: 5rem 2rem;
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 32px;
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+}
+
+.showcase-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.8) 0%, transparent 60%);
+  display: flex;
+  align-items: flex-end;
+  padding: 4rem;
+}
+
+.video-content h3 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+.video-content p {
+  font-size: 1.1rem;
+  color: var(--muted-text);
+  max-width: 500px;
+}
+
+@media (max-width: 768px) {
+  .video-content h3 {
+    font-size: 1.5rem;
+  }
+  
+  .video-overlay {
+    padding: 2rem;
+  }
+}

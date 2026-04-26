@@ -1,0 +1,140 @@
+.app-container {
+  position: relative;
+}
+
+.cta-section {
+  padding: 10rem 2rem;
+  text-align: center;
+}
+
+.cta-card {
+  padding: 6rem 3rem;
+  border-radius: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  transition: var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent-color);
+  box-shadow: 0 40px 80px -20px rgba(59, 130, 246, 0.15);
+}
+
+.cta-card h2 {
+  font-size: 3.5rem;
+  max-width: 800px;
+}
+
+.cta-card p {
+  font-size: 1.25rem;
+  color: var(--muted-text);
+  margin-bottom: 1rem;
+}
+
+.cta-btns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.contact-link {
+  color: var(--muted-text);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition-smooth);
+}
+
+.contact-link:hover {
+  color: var(--accent-color);
+  letter-spacing: 0.05em;
+}
+
+.footer {
+  padding: 8rem 2rem 4rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  gap: 4rem;
+  margin-bottom: 6rem;
+}
+
+.footer-brand {
+  max-width: 300px;
+}
+
+.footer-brand .logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+.footer-brand p {
+  color: var(--muted-text);
+  line-height: 1.6;
+}
+
+.footer-links {
+  display: flex;
+  gap: 6rem;
+}
+
+.link-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.link-group h4 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.link-group a {
+  font-size: 0.9rem;
+  color: var(--muted-text);
+}
+
+.link-group a:hover {
+  color: var(--fg-color);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 4rem;
+  border-top: 1px solid var(--border-color);
+  color: var(--muted-text);
+  font-size: 0.85rem;
+}
+
+@media (max-width: 1024px) {
+  .footer-content {
+    flex-direction: column;
+    gap: 4rem;
+  }
+  
+  .footer-links {
+    gap: 4rem;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 768px) {
+  .cta-card h2 {
+    font-size: 2.5rem;
+  }
+  
+  .footer-links {
+    gap: 2rem;
+    justify-content: space-between;
+  }
+}
