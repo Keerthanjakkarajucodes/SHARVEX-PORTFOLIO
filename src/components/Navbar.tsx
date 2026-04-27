@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Cpu, Code, Globe, MessageSquare } from 'lucide-react';
+import { Menu, X, Code, Globe, MessageSquare } from 'lucide-react';
 import './Navbar.css';
 
 const navLinks = [
@@ -44,7 +44,7 @@ const Navbar: React.FC = () => {
           className="logo"
           onClick={e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
         >
-          <Cpu className="logo-icon" />
+          <img src="/logo.svg" alt="Sharvex Logo" className="logo-icon" />
           <span>SHARVEX</span>
         </a>
 
