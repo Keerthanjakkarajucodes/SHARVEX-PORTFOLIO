@@ -45,7 +45,7 @@ const Navbar: React.FC = () => {
           onClick={e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
         >
           <Cpu className="logo-icon" />
-          <span>Sharvex</span>
+          <span>SHARVEX</span>
         </a>
 
         <div className="nav-links desktop-only">

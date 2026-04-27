@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
-import { Cpu } from 'lucide-react';
 import './Preloader.css';
 
 interface PreloaderProps {
@@ -17,31 +16,31 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
       onComplete: onComplete
     });
 
-    tl.fromTo(logoRef.current, 
+    tl.fromTo(logoRef.current,
       { scale: 0.8, opacity: 0 },
       { scale: 1, opacity: 1, duration: 1, ease: 'power4.out' }
     )
-    .fromTo(textRef.current,
-      { y: 20, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.8, ease: 'power4.out' },
-      "-=0.5"
-    )
-    .to(preloaderRef.current, {
-      yPercent: -100,
-      duration: 1.2,
-      ease: 'power4.inOut',
-      delay: 1
-    });
+      .fromTo(textRef.current,
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, ease: 'power4.out' },
+        "-=0.5"
+      )
+      .to(preloaderRef.current, {
+        yPercent: -100,
+        duration: 1.2,
+        ease: 'power4.inOut',
+        delay: 1
+      });
   }, [onComplete]);
 
   return (
     <div className="preloader" ref={preloaderRef}>
       <div className="preloader-content">
         <div className="preloader-logo" ref={logoRef}>
-          <Cpu size={48} className="logo-icon-main" />
+        <img src="/logo.svg" alt="Sharvex Logo" className="logo-icon-main" />
         </div>
         <div className="preloader-text" ref={textRef}>
-          <span>RAHUL STUDIO</span>
+          <span>SHARVEX</span>
         </div>
       </div>
     </div>

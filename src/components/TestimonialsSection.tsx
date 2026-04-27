@@ -8,7 +8,7 @@ const galleryData: GalleryItem[] = [
     photo: {
       url: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?w=900&auto=format&fit=crop&q=80',
       text: 'Luxury e-commerce platform',
-      by: 'Rahul Studio',
+      by: 'SHARVEX',
     },
   },
   {
@@ -17,7 +17,7 @@ const galleryData: GalleryItem[] = [
     photo: {
       url: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&auto=format&fit=crop&q=80',
       text: 'Analytics dashboard',
-      by: 'Rahul Studio',
+      by: 'SHARVEX',
     },
   },
   {
@@ -26,7 +26,7 @@ const galleryData: GalleryItem[] = [
     photo: {
       url: 'https://images.unsplash.com/photo-1677756119517-756a188d2d94?w=900&auto=format&fit=crop&q=80',
       text: 'AI productivity tool',
-      by: 'Rahul Studio',
+      by: 'SHARVEX',
     },
   },
   {
@@ -35,7 +35,7 @@ const galleryData: GalleryItem[] = [
     photo: {
       url: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=900&auto=format&fit=crop&q=80',
       text: 'Corporate branding project',
-      by: 'Rahul Studio',
+      by: 'SHARVEX',
     },
   },
   {
@@ -44,7 +44,7 @@ const galleryData: GalleryItem[] = [
     photo: {
       url: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=900&auto=format&fit=crop&q=80',
       text: 'Mobile application design',
-      by: 'Rahul Studio',
+      by: 'SHARVEX',
     },
   },
   {
@@ -53,7 +53,7 @@ const galleryData: GalleryItem[] = [
     photo: {
       url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&auto=format&fit=crop&q=80',
       text: 'Finance web application',
-      by: 'Rahul Studio',
+      by: 'SHARVEX',
     },
   },
   {
@@ -62,7 +62,7 @@ const galleryData: GalleryItem[] = [
     photo: {
       url: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&auto=format&fit=crop&q=80',
       text: 'Creative agency website',
-      by: 'Rahul Studio',
+      by: 'SHARVEX',
     },
   },
   {
@@ -71,7 +71,7 @@ const galleryData: GalleryItem[] = [
     photo: {
       url: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=900&auto=format&fit=crop&q=80',
       text: 'Health monitoring platform',
-      by: 'Rahul Studio',
+      by: 'SHARVEX',
     },
   },
 ];
