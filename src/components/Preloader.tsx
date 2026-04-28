@@ -1,47 +1,108 @@
-import React, { useEffect, useRef } from 'react';
-import gsap from 'gsap';
+import React, { useEffect, useState } from 'react';
 import './Preloader.css';
 
 interface PreloaderProps {
   onComplete: () => void;
 }
 
+const BRAND = "SHARVEX";
+
 const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
-  const preloaderRef = useRef<HTMLDivElement>(null);
-  const logoRef = useRef<HTMLDivElement>(null);
-  const textRef = useRef<HTMLDivElement>(null);
+  const [progress, setProgress] = useState(0);
+  const [done, setDone] = useState(false);
 
   useEffect(() => {
-    const tl = gsap.timeline({
-      onComplete: onComplete
-    });
+    const start = performance.now();
+    const duration = 1800;
+    let raf = 0;
+    let timeout1: number;
+    let timeout2: number;
 
-    tl.fromTo(logoRef.current,
-      { scale: 0.8, opacity: 0 },
-      { scale: 1, opacity: 1, duration: 1, ease: 'power4.out' }
-    )
-      .fromTo(textRef.current,
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, ease: 'power4.out' },
-        "-=0.5"
-      )
-      .to(preloaderRef.current, {
-        yPercent: -100,
-        duration: 1.2,
-        ease: 'power4.inOut',
-        delay: 1
-      });
+    const tick = (t: number) => {
+      const p = Math.min(1, (t - start) / duration);
+      setProgress(Math.round(p * 100));
+      if (p < 1) {
+        raf = requestAnimationFrame(tick);
+      } else {
+        timeout1 = window.setTimeout(() => {
+          setDone(true);
+          // Wait 700ms for the transition-opacity duration-700 to complete
+          timeout2 = window.setTimeout(() => onComplete(), 700);
+        }, 500);
+      }
+    };
+    raf = requestAnimationFrame(tick);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      window.clearTimeout(timeout1);
+      window.clearTimeout(timeout2);
+    };
   }, [onComplete]);
 
   return (
-    <div className="preloader" ref={preloaderRef}>
-      <div className="preloader-content">
-        <div className="preloader-logo" ref={logoRef}>
-        <img src="/logo.svg" alt="Sharvex Logo" className="logo-icon-main" />
+    <div className={`sx-root${done ? " sx-done" : ""}`}>
+      <div aria-hidden className="sx-vignette" />
+      <div aria-hidden className="sx-grid" />
+
+      <div className="sx-stage">
+        <div aria-hidden className="sx-halo" />
+
+        <svg aria-hidden viewBox="0 0 200 200" className="sx-ring-outer">
+          <circle
+            cx="100" cy="100" r="94"
+            fill="none" stroke="currentColor" strokeWidth="0.6"
+            strokeDasharray="2 6" opacity="0.55"
+          />
+        </svg>
+
+        <svg aria-hidden viewBox="0 0 200 200" className="sx-ring-inner">
+          <circle cx="100" cy="100" r="86" fill="none" stroke="var(--sx-ring)" strokeWidth="1" />
+          <circle
+            cx="100" cy="100" r="86"
+            fill="none" stroke="currentColor" strokeWidth="1.2"
+            strokeLinecap="round" strokeDasharray="60 480"
+          />
+        </svg>
+
+        <div className="sx-logo">
+          <img src="/logo.svg" alt="Sharvex logo" draggable={false} />
         </div>
-        <div className="preloader-text" ref={textRef}>
-          <span>SHARVEX</span>
+      </div>
+
+      <div className="sx-wordmark" aria-label="Sharvex">
+        {BRAND.split("").map((ch, i) => (
+          <span
+            key={i}
+            className="sx-letter"
+            style={{ animationDelay: `${0.6 + i * 0.08}s` }}
+          >
+            {ch}
+          </span>
+        ))}
+      </div>
+
+      <p className="sx-tagline">Crafting Digital Excellence</p>
+
+      <div className="sx-progress">
+        <div className="sx-progress-bar" style={{ width: `${progress}%` }} />
+        <div aria-hidden className="sx-shimmer" />
+      </div>
+
+      <div className="sx-meta">
+        <span className="sx-percent">{String(progress).padStart(3, "0")}%</span>
+        <span className="sx-rule" />
+        <div className="sx-dots">
+          <span className="sx-dot" />
+          <span className="sx-dot" />
+          <span className="sx-dot" />
         </div>
+      </div>
+
+      <div className="sx-footer">
+        <span className="sx-footer-rule" />
+        <span className="sx-footer-text">Est · Studio</span>
+        <span className="sx-footer-rule" />
       </div>
     </div>
   );

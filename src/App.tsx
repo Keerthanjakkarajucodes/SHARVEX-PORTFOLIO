@@ -34,7 +34,7 @@ function App() {
 
   useEffect(() => {
     if (loading) return;
-    
+
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -64,61 +64,66 @@ function App() {
       }}>
         <SplashCursor COLOR="#000000" />
       </div>
-      {loading && <Preloader onComplete={handleLoadingComplete} />}
-      <Navbar />
-      <main>
-        <Hero />
-        <Projects />
-        <CircularTestimonialsDemo />
-        <LogoCloud />
-        <FeatureGrid />
-        <Pricing />
-        <FAQ />
-        
-        {/* Call to Action Section */}
-        <section className="cta-section container" id="contact">
-          <div className="cta-card glass glow-effect">
-            <h2>Ready to transform your <span className="accent">vision?</span></h2>
-            <p>Let's collaborate to build something extraordinary. Currently accepting new projects for Q3 2024.</p>
-            <div className="cta-btns">
-              <button className="btn-primary large">Start a Conversation</button>
-              <a href="mailto:hello@rahul.studio" className="contact-link">hello@rahul.studio</a>
-            </div>
-          </div>
-        </section>
-      </main>
+      {loading ? (
+        <Preloader onComplete={handleLoadingComplete} />
+      ) : (
+        <>
+          <Navbar />
+          <main>
+            <Hero />
+            <Projects />
+            <CircularTestimonialsDemo />
+            <LogoCloud />
+            <FeatureGrid />
+            <Pricing />
+            <FAQ />
 
-      <footer className="footer container">
-        <div className="footer-content">
-          <div className="footer-brand">
-            <span className="logo">RAHUL STUDIO</span>
-            <p>High-end web development, UI/UX design, and AI-driven solutions.</p>
-          </div>
-          <div className="footer-links">
-            <div className="link-group">
-              <h4>Services</h4>
-              <a href="#services">Design</a>
-              <a href="#services">Development</a>
-              <a href="#services">AI Solutions</a>
+            {/* Call to Action Section */}
+            <section className="cta-section container" id="contact">
+              <div className="cta-card glass glow-effect">
+                <h2>Ready to transform your <span className="accent">vision?</span></h2>
+                <p>Let's collaborate to build something extraordinary. Currently accepting new projects</p>
+                <div className="cta-btns">
+                  <button className="btn-primary large">Start a Conversation</button>
+                  <a href="mailto:hello@rahul.studio" className="contact-link">hello@SHARVEX</a>
+                </div>
+              </div>
+            </section>
+          </main>
+
+          <footer className="footer container">
+            <div className="footer-content">
+              <div className="footer-brand">
+                <span className="logo">SHARVEX</span>
+                <p>High-end web development, UI/UX design, and AI-driven solutions.</p>
+              </div>
+              <div className="footer-links">
+                <div className="link-group">
+                  <h4>Services</h4>
+                  <a href="#services">Design</a>
+                  <a href="#services">Development</a>
+                  <a href="#services">AI Solutions</a>
+                </div>
+                <div className="link-group">
+                  <h4>Studio</h4>
+                  <a href="#portfolio">Portfolio</a>
+                  <a href="#about">About</a>
+                  <a href="#contact">Contact</a>
+                </div>
+                <div className="link-group">
+                  <h4>Social</h4>
+                  <a href="#">Twitter</a>
+                  <a href="#">GitHub</a>
+                  <a href="#">LinkedIn</a>
+                </div>
+              </div>
             </div>
-            <div className="link-group">
-              <h4>Studio</h4>
-              <a href="#portfolio">Portfolio</a>
-              <a href="#about">About</a>
-              <a href="#contact">Contact</a>
+            <div className="footer-bottom">
+              <p>&copy; 2026 SHARVEX. All rights reserved.</p>
             </div>
-            <div className="link-group">
-              <h4>Social</h4>
-              <a href="#">Twitter</a>
-              <a href="#">GitHub</a>
-              <a href="#">LinkedIn</a>
-            </div>
-          </div>
-        </div>
-        <div className="footer-bottom">
-          <p>&copy; 2026 RAHUL STUDIO. All rights reserved.</p>
-        </div>
-      </footer>
+          </footer>
+        </>
+      )}
     </div>
   );
 }
