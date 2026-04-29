@@ -9,27 +9,13 @@ import Pricing from './components/Pricing';
 import FAQ from './components/FAQ';
 import Preloader from './components/Preloader';
 import { CircularTestimonialsDemo } from './components/CircularTestimonialsDemo';
-import SplashCursor from './components/ui/SplashCursor';
 import './App.css';
 
 function App() {
   const [loading, setLoading] = useState(true);
-  const [showCursor, setShowCursor] = useState(true);
 
   const handleLoadingComplete = useCallback(() => {
     setLoading(false);
-  }, []);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > window.innerHeight * 0.8) {
-        setShowCursor(false);
-      } else {
-        setShowCursor(true);
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
@@ -54,16 +40,7 @@ function App() {
 
   return (
     <div className="app-container">
-      <div style={{
-        opacity: showCursor ? 1 : 0,
-        transition: 'opacity 0.6s ease',
-        pointerEvents: 'none',
-        position: 'fixed',
-        inset: 0,
-        zIndex: 50
-      }}>
-        <SplashCursor COLOR="#000000" />
-      </div>
+
       {loading ? (
         <Preloader onComplete={handleLoadingComplete} />
       ) : (
