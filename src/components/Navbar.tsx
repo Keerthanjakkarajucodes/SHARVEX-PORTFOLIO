@@ -19,7 +19,7 @@ const scrollToSection = (href: string, closeMobile?: () => void) => {
   closeMobile?.();
 };
 
-const Magnetic: React.FC<{ children: React.ReactElement, strength?: number }> = ({ children, strength = 0.15 }) => {
+const Magnetic: React.FC<{ children: React.ReactElement<any>, strength?: number }> = ({ children, strength = 0.15 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
@@ -113,7 +113,7 @@ const Navbar: React.FC = () => {
                 <a
                   href={link.href}
                   className="nav-item"
-                  ref={el => navRefs.current[index] = el}
+                  ref={el => { navRefs.current[index] = el; }}
                   onMouseEnter={() => setHoveredIndex(index)}
                   onClick={e => { e.preventDefault(); scrollToSection(link.href); }}
                 >
