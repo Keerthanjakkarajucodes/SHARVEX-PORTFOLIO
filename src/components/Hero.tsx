@@ -2,6 +2,8 @@ import React, { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import './Hero.css';
 
+const MARQUEE_TEXT = '\u2726 Design \u2726 Build \u2726 Launch \u2726 Scale \u2726 Automate \u2726 Grow \u2726';
+
 const Hero: React.FC = () => {
   const heroRef = useRef<HTMLElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
@@ -31,15 +33,15 @@ const Hero: React.FC = () => {
     )
     .to(line1Ref.current,
       { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1.2, ease: 'power3.out' },
-      "-=0.4"
+      '-=0.4'
     )
     .to(line2Ref.current,
       { opacity: 0.7, y: 0, duration: 1.2, ease: 'power3.out' },
-      "-=0.9"
+      '-=0.9'
     )
     .to(subContentRef.current,
       { opacity: 1, y: 0, duration: 1.2, ease: 'power3.out' },
-      "-=0.8"
+      '-=0.8'
     );
 
     // Subtle parallax effect
@@ -47,7 +49,7 @@ const Hero: React.FC = () => {
       if (!heroRef.current || !gridRef.current) return;
       const { clientX, clientY } = e;
       const { innerWidth, innerHeight } = window;
-      const xPos = (clientX / innerWidth - 0.5) * 10; // max 5px each way
+      const xPos = (clientX / innerWidth - 0.5) * 10;
       const yPos = (clientY / innerHeight - 0.5) * 10;
 
       gsap.to(gridRef.current, {
@@ -77,7 +79,7 @@ const Hero: React.FC = () => {
 
       <div className="container hero-content">
         <div className="hero-label" ref={labelRef}>
-          — CREATIVE DEVELOPER & DESIGNER —
+          — CREATIVE DEVELOPER &amp; DESIGNER —
         </div>
 
         <div className="hero-title-container">
@@ -96,6 +98,20 @@ const Hero: React.FC = () => {
           <p className="hero-description">
             Crafting digital experiences that live at the intersection of beauty, function, and intention.
           </p>
+        </div>
+      </div>
+
+      {/* Bottom marquee — two identical groups, track moves -50% for seamless loop.
+           Each group repeats the text 5× so it is always wider than the viewport. */}
+      <div className="hero-marquee" aria-hidden="true">
+        <div className="marquee-track">
+          {[0, 1].map(g => (
+            <div className="marquee-group" key={g}>
+              {Array.from({ length: 5 }).map((_, i) => (
+                <span className="marquee-text" key={i}>{MARQUEE_TEXT}</span>
+              ))}
+            </div>
+          ))}
         </div>
       </div>
     </section>
